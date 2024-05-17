@@ -1,4 +1,3 @@
-/* --------------------------- NO TOCAR DESDE ACÁ --------------------------- */
 let datosPersona = {
   nombre: "",
   edad: 0,
@@ -31,39 +30,55 @@ const cambiarTema = document.querySelector('#cambiar-tema');
 profileBtn.addEventListener("click", renderizarDatosUsuario);
 materiasBtn.addEventListener("click", recorrerListadoYRenderizarTarjetas);
 cambiarTema.addEventListener("click", alternarColorTema);
-/* --------------------------- NO TOCAR HASTA ACÁ --------------------------- */
 
 function obtenerDatosDelUsuario() {
-  /* --------------- PUNTO 1: Escribe tu codigo a partir de aqui --------------- */
-
-
-
+  datosPersona.nombre = prompt("Ingresa tu nombre:");
+  const anioNacimiento = prompt("Ingresa tu año de nacimiento:");
+  datosPersona.edad = new Date().getFullYear() - anioNacimiento;
+  datosPersona.ciudad = prompt("Ingresa tu ciudad:");
+  datosPersona.interesPorJs = confirm("¿Te interesa JavaScript?") ? "Sí" : "No";
 }
 
 function renderizarDatosUsuario() {
-  /* ------------------- NO TOCAR NI ELIMINAR ESTA FUNCION. ------------------- */
   obtenerDatosDelUsuario();
-  /* --------------- PUNTO 2: Escribe tu codigo a partir de aqui --------------- */
-
-
-
+  document.getElementById("nombre").textContent = datosPersona.nombre;
+  document.getElementById("edad").textContent = datosPersona.edad;
+  document.getElementById("ciudad").textContent = datosPersona.ciudad;
+  document.getElementById("javascript").textContent = datosPersona.interesPorJs;
 }
 
-
 function recorrerListadoYRenderizarTarjetas() {
-  /* ------------------ PUNTO 3: Escribe tu codigo desde aqui ------------------ */
-
-
-
+  const fila = document.getElementById("fila");
+  fila.innerHTML = "";
+  listado.forEach(item => {
+    const caja = document.createElement("div");
+    caja.className = "caja";
+    
+    const img = document.createElement("img");
+    img.src = item.imgUrl;
+    img.alt = item.lenguajes;
+    caja.appendChild(img);
+    
+    const lenguajes = document.createElement("p");
+    lenguajes.className = "lenguajes";
+    lenguajes.textContent = item.lenguajes;
+    caja.appendChild(lenguajes);
+    
+    const bimestre = document.createElement("p");
+    bimestre.className = "bimestre";
+    bimestre.textContent = item.bimestre;
+    caja.appendChild(bimestre);
+    
+    fila.appendChild(caja);
+  });
 }
 
 function alternarColorTema() {
-  /* --------------------- PUNTO 4: Escribe tu codigo aqui --------------------- */
-
-
-
-
+  document.getElementById("sitio").classList.toggle("dark");
 }
 
-/* --------------------- PUNTO 5: Escribe tu codigo aqui --------------------- */
-
+document.addEventListener("keydown", (event) => {
+  if (event.key === 'f' || event.key === 'F') {
+    document.getElementById("sobre-mi").classList.remove("oculto");
+  }
+});
