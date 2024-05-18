@@ -49,7 +49,7 @@ function renderizarDatosUsuario() {
 
 function recorrerListadoYRenderizarTarjetas() {
   const fila = document.getElementById("fila");
-  fila.innerHTML = "";
+  fila.textContent = "";
   listado.forEach(item => {
     const caja = document.createElement("div");
     caja.className = "caja";
@@ -78,7 +78,7 @@ function alternarColorTema() {
 }
 
 document.addEventListener("keydown", (event) => {
-  if (event.key === 'f' || event.key === 'F') {
+  if (event.key.toLowerCase() === 'f') {
     document.getElementById("sobre-mi").classList.remove("oculto");
   }
 });
